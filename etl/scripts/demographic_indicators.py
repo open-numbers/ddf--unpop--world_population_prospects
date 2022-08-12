@@ -27,6 +27,7 @@ use_indicators = [
     "NNR",
     "MAC",
     "SRB",
+    "CDR",
     "NetMigrations",
     "CNMR"
 ]

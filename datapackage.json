@@ -8,7 +8,7 @@
     "description": "",
     "author": "",
     "license": "",
-    "created": "2022-08-12T07:59:23.516122+00:00",
+    "created": "2022-08-12T12:25:13.958261+00:00",
     "translations": [],
     "version": "0.0.1",
     "resources": [
@@ -424,6 +424,153 @@
                     },
                     {
                         "name": "births1519"
+                    }
+                ],
+                "primaryKey": [
+                    "world",
+                    "time"
+                ]
+            }
+        },
+        {
+            "name": "ddf--datapoints--cdr--by--country_area--time",
+            "path": "demographic_indicators/ddf--datapoints--cdr--by--country_area--time.csv",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "country_area"
+                    },
+                    {
+                        "name": "time"
+                    },
+                    {
+                        "name": "cdr"
+                    }
+                ],
+                "primaryKey": [
+                    "country_area",
+                    "time"
+                ]
+            }
+        },
+        {
+            "name": "ddf--datapoints--cdr--by--development_group--time",
+            "path": "demographic_indicators/ddf--datapoints--cdr--by--development_group--time.csv",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "development_group"
+                    },
+                    {
+                        "name": "time"
+                    },
+                    {
+                        "name": "cdr"
+                    }
+                ],
+                "primaryKey": [
+                    "development_group",
+                    "time"
+                ]
+            }
+        },
+        {
+            "name": "ddf--datapoints--cdr--by--geographic_region--time",
+            "path": "demographic_indicators/ddf--datapoints--cdr--by--geographic_region--time.csv",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "geographic_region"
+                    },
+                    {
+                        "name": "time"
+                    },
+                    {
+                        "name": "cdr"
+                    }
+                ],
+                "primaryKey": [
+                    "geographic_region",
+                    "time"
+                ]
+            }
+        },
+        {
+            "name": "ddf--datapoints--cdr--by--income_group--time",
+            "path": "demographic_indicators/ddf--datapoints--cdr--by--income_group--time.csv",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "income_group"
+                    },
+                    {
+                        "name": "time"
+                    },
+                    {
+                        "name": "cdr"
+                    }
+                ],
+                "primaryKey": [
+                    "income_group",
+                    "time"
+                ]
+            }
+        },
+        {
+            "name": "ddf--datapoints--cdr--by--sdg_region--time",
+            "path": "demographic_indicators/ddf--datapoints--cdr--by--sdg_region--time.csv",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "sdg_region"
+                    },
+                    {
+                        "name": "time"
+                    },
+                    {
+                        "name": "cdr"
+                    }
+                ],
+                "primaryKey": [
+                    "sdg_region",
+                    "time"
+                ]
+            }
+        },
+        {
+            "name": "ddf--datapoints--cdr--by--subregion--time",
+            "path": "demographic_indicators/ddf--datapoints--cdr--by--subregion--time.csv",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "subregion"
+                    },
+                    {
+                        "name": "time"
+                    },
+                    {
+                        "name": "cdr"
+                    }
+                ],
+                "primaryKey": [
+                    "subregion",
+                    "time"
+                ]
+            }
+        },
+        {
+            "name": "ddf--datapoints--cdr--by--world--time",
+            "path": "demographic_indicators/ddf--datapoints--cdr--by--world--time.csv",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "world"
+                    },
+                    {
+                        "name": "time"
+                    },
+                    {
+                        "name": "cdr"
                     }
                 ],
                 "primaryKey": [
@@ -56713,6 +56860,92 @@
                 "value": "births1519",
                 "resources": [
                     "ddf--datapoints--births1519--by--world--time"
+                ]
+            },
+            {
+                "primaryKey": [
+                    "country_area",
+                    "time"
+                ],
+                "value": "cdr",
+                "resources": [
+                    "ddf--datapoints--cdr--by--country_area--time"
+                ]
+            },
+            {
+                "primaryKey": [
+                    "development_group",
+                    "time"
+                ],
+                "value": "cdr",
+                "resources": [
+                    "ddf--datapoints--cdr--by--development_group--time"
+                ]
+            },
+            {
+                "primaryKey": [
+                    "geographic_region",
+                    "time"
+                ],
+                "value": "cdr",
+                "resources": [
+                    "ddf--datapoints--cdr--by--geographic_region--time"
+                ]
+            },
+            {
+                "primaryKey": [
+                    "income_group",
+                    "time"
+                ],
+                "value": "cdr",
+                "resources": [
+                    "ddf--datapoints--cdr--by--income_group--time"
+                ]
+            },
+            {
+                "primaryKey": [
+                    "location",
+                    "time"
+                ],
+                "value": "cdr",
+                "resources": [
+                    "ddf--datapoints--cdr--by--country_area--time",
+                    "ddf--datapoints--cdr--by--development_group--time",
+                    "ddf--datapoints--cdr--by--geographic_region--time",
+                    "ddf--datapoints--cdr--by--income_group--time",
+                    "ddf--datapoints--cdr--by--sdg_region--time",
+                    "ddf--datapoints--cdr--by--subregion--time",
+                    "ddf--datapoints--cdr--by--world--time"
+                ]
+            },
+            {
+                "primaryKey": [
+                    "sdg_region",
+                    "time"
+                ],
+                "value": "cdr",
+                "resources": [
+                    "ddf--datapoints--cdr--by--sdg_region--time"
+                ]
+            },
+            {
+                "primaryKey": [
+                    "subregion",
+                    "time"
+                ],
+                "value": "cdr",
+                "resources": [
+                    "ddf--datapoints--cdr--by--subregion--time"
+                ]
+            },
+            {
+                "primaryKey": [
+                    "time",
+                    "world"
+                ],
+                "value": "cdr",
+                "resources": [
+                    "ddf--datapoints--cdr--by--world--time"
                 ]
             },
             {
