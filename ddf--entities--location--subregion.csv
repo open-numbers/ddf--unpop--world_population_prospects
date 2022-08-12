@@ -1,0 +1,22 @@
+subregion,name,sdmx_code,parent_id,is--subregion
+910,Eastern Africa,14,903,TRUE
+911,Middle Africa,17,903,TRUE
+912,Northern Africa,15,903,TRUE
+913,Southern Africa,18,903,TRUE
+914,Western Africa,11,903,TRUE
+5500,Central Asia,143,935,TRUE
+906,Eastern Asia,30,935,TRUE
+5501,Southern Asia,34,935,TRUE
+920,South-Eastern Asia,35,935,TRUE
+922,Western Asia,145,935,TRUE
+923,Eastern Europe,151,908,TRUE
+924,Northern Europe,154,908,TRUE
+925,Southern Europe,39,908,TRUE
+926,Western Europe,155,908,TRUE
+915,Caribbean,29,904,TRUE
+916,Central America,13,904,TRUE
+931,South America,5,904,TRUE
+927,Australia/New Zealand,53,909,TRUE
+928,Melanesia,54,909,TRUE
+954,Micronesia,57,909,TRUE
+957,Polynesia,61,909,TRUE
