@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
 
+"""
+NOTE: outdated
+"""
+
 import concurrent.futures
 import threading
 import os.path as osp
