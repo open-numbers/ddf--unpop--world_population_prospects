@@ -28,6 +28,8 @@ use_indicators = [
     "MAC",
     "SRB",
     "CDR",
+    "LExMale",
+    "LExFemale",
     "NetMigrations",
     "CNMR"
 ]

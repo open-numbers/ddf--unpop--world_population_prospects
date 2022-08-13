@@ -21,3 +21,7 @@ age_group_broad,name,is--age_group_broad
 90_94,90-94,TRUE
 95_99,95-99,TRUE
 100plus,100+,TRUE
+0_14,0-14,TRUE
+15_24,15-24,TRUE
+15_49,15-49,TRUE
+50plus,50+,TRUE

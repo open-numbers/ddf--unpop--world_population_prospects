@@ -1,14 +1,14 @@
 {
-    "name": "ddf--unpop--wpp_population2019",
+    "name": "ddf--unpop--world_population_prospects",
     "language": {
         "id": "en",
         "name": "English"
     },
-    "title": "ddf--unpop--wpp_population2019",
+    "title": "ddf--unpop--world_population_prospects",
     "description": "",
     "author": "",
     "license": "",
-    "created": "2022-08-12T12:25:13.958261+00:00",
+    "created": "2022-08-13T01:56:12.600548+00:00",
     "translations": [],
     "version": "0.0.1",
     "resources": [
@@ -865,6 +865,300 @@
                     },
                     {
                         "name": "doublingtime"
+                    }
+                ],
+                "primaryKey": [
+                    "world",
+                    "time"
+                ]
+            }
+        },
+        {
+            "name": "ddf--datapoints--lexfemale--by--country_area--time",
+            "path": "demographic_indicators/ddf--datapoints--lexfemale--by--country_area--time.csv",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "country_area"
+                    },
+                    {
+                        "name": "time"
+                    },
+                    {
+                        "name": "lexfemale"
+                    }
+                ],
+                "primaryKey": [
+                    "country_area",
+                    "time"
+                ]
+            }
+        },
+        {
+            "name": "ddf--datapoints--lexfemale--by--development_group--time",
+            "path": "demographic_indicators/ddf--datapoints--lexfemale--by--development_group--time.csv",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "development_group"
+                    },
+                    {
+                        "name": "time"
+                    },
+                    {
+                        "name": "lexfemale"
+                    }
+                ],
+                "primaryKey": [
+                    "development_group",
+                    "time"
+                ]
+            }
+        },
+        {
+            "name": "ddf--datapoints--lexfemale--by--geographic_region--time",
+            "path": "demographic_indicators/ddf--datapoints--lexfemale--by--geographic_region--time.csv",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "geographic_region"
+                    },
+                    {
+                        "name": "time"
+                    },
+                    {
+                        "name": "lexfemale"
+                    }
+                ],
+                "primaryKey": [
+                    "geographic_region",
+                    "time"
+                ]
+            }
+        },
+        {
+            "name": "ddf--datapoints--lexfemale--by--income_group--time",
+            "path": "demographic_indicators/ddf--datapoints--lexfemale--by--income_group--time.csv",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "income_group"
+                    },
+                    {
+                        "name": "time"
+                    },
+                    {
+                        "name": "lexfemale"
+                    }
+                ],
+                "primaryKey": [
+                    "income_group",
+                    "time"
+                ]
+            }
+        },
+        {
+            "name": "ddf--datapoints--lexfemale--by--sdg_region--time",
+            "path": "demographic_indicators/ddf--datapoints--lexfemale--by--sdg_region--time.csv",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "sdg_region"
+                    },
+                    {
+                        "name": "time"
+                    },
+                    {
+                        "name": "lexfemale"
+                    }
+                ],
+                "primaryKey": [
+                    "sdg_region",
+                    "time"
+                ]
+            }
+        },
+        {
+            "name": "ddf--datapoints--lexfemale--by--subregion--time",
+            "path": "demographic_indicators/ddf--datapoints--lexfemale--by--subregion--time.csv",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "subregion"
+                    },
+                    {
+                        "name": "time"
+                    },
+                    {
+                        "name": "lexfemale"
+                    }
+                ],
+                "primaryKey": [
+                    "subregion",
+                    "time"
+                ]
+            }
+        },
+        {
+            "name": "ddf--datapoints--lexfemale--by--world--time",
+            "path": "demographic_indicators/ddf--datapoints--lexfemale--by--world--time.csv",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "world"
+                    },
+                    {
+                        "name": "time"
+                    },
+                    {
+                        "name": "lexfemale"
+                    }
+                ],
+                "primaryKey": [
+                    "world",
+                    "time"
+                ]
+            }
+        },
+        {
+            "name": "ddf--datapoints--lexmale--by--country_area--time",
+            "path": "demographic_indicators/ddf--datapoints--lexmale--by--country_area--time.csv",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "country_area"
+                    },
+                    {
+                        "name": "time"
+                    },
+                    {
+                        "name": "lexmale"
+                    }
+                ],
+                "primaryKey": [
+                    "country_area",
+                    "time"
+                ]
+            }
+        },
+        {
+            "name": "ddf--datapoints--lexmale--by--development_group--time",
+            "path": "demographic_indicators/ddf--datapoints--lexmale--by--development_group--time.csv",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "development_group"
+                    },
+                    {
+                        "name": "time"
+                    },
+                    {
+                        "name": "lexmale"
+                    }
+                ],
+                "primaryKey": [
+                    "development_group",
+                    "time"
+                ]
+            }
+        },
+        {
+            "name": "ddf--datapoints--lexmale--by--geographic_region--time",
+            "path": "demographic_indicators/ddf--datapoints--lexmale--by--geographic_region--time.csv",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "geographic_region"
+                    },
+                    {
+                        "name": "time"
+                    },
+                    {
+                        "name": "lexmale"
+                    }
+                ],
+                "primaryKey": [
+                    "geographic_region",
+                    "time"
+                ]
+            }
+        },
+        {
+            "name": "ddf--datapoints--lexmale--by--income_group--time",
+            "path": "demographic_indicators/ddf--datapoints--lexmale--by--income_group--time.csv",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "income_group"
+                    },
+                    {
+                        "name": "time"
+                    },
+                    {
+                        "name": "lexmale"
+                    }
+                ],
+                "primaryKey": [
+                    "income_group",
+                    "time"
+                ]
+            }
+        },
+        {
+            "name": "ddf--datapoints--lexmale--by--sdg_region--time",
+            "path": "demographic_indicators/ddf--datapoints--lexmale--by--sdg_region--time.csv",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "sdg_region"
+                    },
+                    {
+                        "name": "time"
+                    },
+                    {
+                        "name": "lexmale"
+                    }
+                ],
+                "primaryKey": [
+                    "sdg_region",
+                    "time"
+                ]
+            }
+        },
+        {
+            "name": "ddf--datapoints--lexmale--by--subregion--time",
+            "path": "demographic_indicators/ddf--datapoints--lexmale--by--subregion--time.csv",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "subregion"
+                    },
+                    {
+                        "name": "time"
+                    },
+                    {
+                        "name": "lexmale"
+                    }
+                ],
+                "primaryKey": [
+                    "subregion",
+                    "time"
+                ]
+            }
+        },
+        {
+            "name": "ddf--datapoints--lexmale--by--world--time",
+            "path": "demographic_indicators/ddf--datapoints--lexmale--by--world--time.csv",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "world"
+                    },
+                    {
+                        "name": "time"
+                    },
+                    {
+                        "name": "lexmale"
                     }
                 ],
                 "primaryKey": [
@@ -55415,6 +55709,52 @@
                     "age_group_5year"
                 ]
             }
+        },
+        {
+            "name": "ddf--datapoints--popsexratio--by--country_area--time--age_group_broad",
+            "path": "ratios/ddf--datapoints--popsexratio--by--country_area--time--age_group_broad.csv",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "country_area"
+                    },
+                    {
+                        "name": "time"
+                    },
+                    {
+                        "name": "age_group_broad"
+                    },
+                    {
+                        "name": "popsexratio"
+                    }
+                ],
+                "primaryKey": [
+                    "country_area",
+                    "time",
+                    "age_group_broad"
+                ]
+            }
+        },
+        {
+            "name": "ddf--datapoints--total_dependency_ratio1564--by--country_area--time",
+            "path": "ratios/ddf--datapoints--total_dependency_ratio1564--by--country_area--time.csv",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "country_area"
+                    },
+                    {
+                        "name": "time"
+                    },
+                    {
+                        "name": "total_dependency_ratio1564"
+                    }
+                ],
+                "primaryKey": [
+                    "country_area",
+                    "time"
+                ]
+            }
         }
     ],
     "ddfSchema": {
@@ -58278,6 +58618,178 @@
             },
             {
                 "primaryKey": [
+                    "country_area",
+                    "time"
+                ],
+                "value": "lexfemale",
+                "resources": [
+                    "ddf--datapoints--lexfemale--by--country_area--time"
+                ]
+            },
+            {
+                "primaryKey": [
+                    "development_group",
+                    "time"
+                ],
+                "value": "lexfemale",
+                "resources": [
+                    "ddf--datapoints--lexfemale--by--development_group--time"
+                ]
+            },
+            {
+                "primaryKey": [
+                    "geographic_region",
+                    "time"
+                ],
+                "value": "lexfemale",
+                "resources": [
+                    "ddf--datapoints--lexfemale--by--geographic_region--time"
+                ]
+            },
+            {
+                "primaryKey": [
+                    "income_group",
+                    "time"
+                ],
+                "value": "lexfemale",
+                "resources": [
+                    "ddf--datapoints--lexfemale--by--income_group--time"
+                ]
+            },
+            {
+                "primaryKey": [
+                    "location",
+                    "time"
+                ],
+                "value": "lexfemale",
+                "resources": [
+                    "ddf--datapoints--lexfemale--by--country_area--time",
+                    "ddf--datapoints--lexfemale--by--development_group--time",
+                    "ddf--datapoints--lexfemale--by--geographic_region--time",
+                    "ddf--datapoints--lexfemale--by--income_group--time",
+                    "ddf--datapoints--lexfemale--by--sdg_region--time",
+                    "ddf--datapoints--lexfemale--by--subregion--time",
+                    "ddf--datapoints--lexfemale--by--world--time"
+                ]
+            },
+            {
+                "primaryKey": [
+                    "sdg_region",
+                    "time"
+                ],
+                "value": "lexfemale",
+                "resources": [
+                    "ddf--datapoints--lexfemale--by--sdg_region--time"
+                ]
+            },
+            {
+                "primaryKey": [
+                    "subregion",
+                    "time"
+                ],
+                "value": "lexfemale",
+                "resources": [
+                    "ddf--datapoints--lexfemale--by--subregion--time"
+                ]
+            },
+            {
+                "primaryKey": [
+                    "time",
+                    "world"
+                ],
+                "value": "lexfemale",
+                "resources": [
+                    "ddf--datapoints--lexfemale--by--world--time"
+                ]
+            },
+            {
+                "primaryKey": [
+                    "country_area",
+                    "time"
+                ],
+                "value": "lexmale",
+                "resources": [
+                    "ddf--datapoints--lexmale--by--country_area--time"
+                ]
+            },
+            {
+                "primaryKey": [
+                    "development_group",
+                    "time"
+                ],
+                "value": "lexmale",
+                "resources": [
+                    "ddf--datapoints--lexmale--by--development_group--time"
+                ]
+            },
+            {
+                "primaryKey": [
+                    "geographic_region",
+                    "time"
+                ],
+                "value": "lexmale",
+                "resources": [
+                    "ddf--datapoints--lexmale--by--geographic_region--time"
+                ]
+            },
+            {
+                "primaryKey": [
+                    "income_group",
+                    "time"
+                ],
+                "value": "lexmale",
+                "resources": [
+                    "ddf--datapoints--lexmale--by--income_group--time"
+                ]
+            },
+            {
+                "primaryKey": [
+                    "location",
+                    "time"
+                ],
+                "value": "lexmale",
+                "resources": [
+                    "ddf--datapoints--lexmale--by--country_area--time",
+                    "ddf--datapoints--lexmale--by--development_group--time",
+                    "ddf--datapoints--lexmale--by--geographic_region--time",
+                    "ddf--datapoints--lexmale--by--income_group--time",
+                    "ddf--datapoints--lexmale--by--sdg_region--time",
+                    "ddf--datapoints--lexmale--by--subregion--time",
+                    "ddf--datapoints--lexmale--by--world--time"
+                ]
+            },
+            {
+                "primaryKey": [
+                    "sdg_region",
+                    "time"
+                ],
+                "value": "lexmale",
+                "resources": [
+                    "ddf--datapoints--lexmale--by--sdg_region--time"
+                ]
+            },
+            {
+                "primaryKey": [
+                    "subregion",
+                    "time"
+                ],
+                "value": "lexmale",
+                "resources": [
+                    "ddf--datapoints--lexmale--by--subregion--time"
+                ]
+            },
+            {
+                "primaryKey": [
+                    "time",
+                    "world"
+                ],
+                "value": "lexmale",
+                "resources": [
+                    "ddf--datapoints--lexmale--by--world--time"
+                ]
+            },
+            {
+                "primaryKey": [
                     "age_group_broad",
                     "country_area",
                     "sex",
@@ -59794,6 +60306,28 @@
                 "value": "popgrowthrate",
                 "resources": [
                     "ddf--datapoints--popgrowthrate--by--world--time"
+                ]
+            },
+            {
+                "primaryKey": [
+                    "age_group_broad",
+                    "country_area",
+                    "time"
+                ],
+                "value": "popsexratio",
+                "resources": [
+                    "ddf--datapoints--popsexratio--by--country_area--time--age_group_broad"
+                ]
+            },
+            {
+                "primaryKey": [
+                    "age_group_broad",
+                    "location",
+                    "time"
+                ],
+                "value": "popsexratio",
+                "resources": [
+                    "ddf--datapoints--popsexratio--by--country_area--time--age_group_broad"
                 ]
             },
             {
@@ -63688,6 +64222,26 @@
                 "value": "sx",
                 "resources": [
                     "ddf--datapoints--sx--by--world--time--age_group_broad"
+                ]
+            },
+            {
+                "primaryKey": [
+                    "country_area",
+                    "time"
+                ],
+                "value": "total_dependency_ratio1564",
+                "resources": [
+                    "ddf--datapoints--total_dependency_ratio1564--by--country_area--time"
+                ]
+            },
+            {
+                "primaryKey": [
+                    "location",
+                    "time"
+                ],
+                "value": "total_dependency_ratio1564",
+                "resources": [
+                    "ddf--datapoints--total_dependency_ratio1564--by--country_area--time"
                 ]
             },
             {
