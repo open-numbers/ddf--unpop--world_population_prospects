@@ -1,0 +1,9 @@
+sdg_region,name,sdmx_code,parent_id,is--sdg_region
+1834,Sub-Saharan Africa,202,1828,TRUE
+1833,Northern Africa and Western Asia,747,1828,TRUE
+1831,Central and Southern Asia,62,1828,TRUE
+1832,Eastern and South-Eastern Asia,753,1828,TRUE
+1830,Latin America and the Caribbean,419,1828,TRUE
+1835,Oceania (excluding Australia and New Zealand),543,1828,TRUE
+1836,Australia/New Zealand,53,1828,TRUE
+1829,Europe and Northern America,513,1828,TRUE

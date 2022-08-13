@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-A script to parse UN WPP data files from https://population.un.org/wpp2019/Download/Standard/Population/
+NOTE: Outdated
 """
 
 import os

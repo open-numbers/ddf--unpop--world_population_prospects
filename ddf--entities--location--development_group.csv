@@ -1,0 +1,8 @@
+development_group,name,sdmx_code,parent_id,is--development_group
+901,More developed regions,514,1803,TRUE
+902,Less developed regions,515,1803,TRUE
+941,Least developed countries,199,902,TRUE
+934,"Less developed regions, excluding least developed countries",,902,TRUE
+948,"Less developed regions, excluding China",,1803,TRUE
+1636,Land-locked Developing Countries (LLDC),432,1803,TRUE
+1637,Small island developing States (SIDS),722,1803,TRUE

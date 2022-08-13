@@ -1,0 +1,7 @@
+income_group,name,parent_id,is--income_group
+1503,High-income countries,1802,TRUE
+1517,Middle-income countries,1802,TRUE
+1502,Upper-middle-income countries,1517,TRUE
+1501,Lower-middle-income countries,1517,TRUE
+1500,Low-income countries,1802,TRUE
+1518,No income group available,1802,TRUE
