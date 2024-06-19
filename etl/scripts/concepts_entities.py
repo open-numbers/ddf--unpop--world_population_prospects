@@ -2,7 +2,7 @@
 import pandas as pd
 from ddf_utils.str import to_concept_id
 # %%
-source_file =  "../source/WPP2022_F01_LOCATIONS.XLSX"
+source_file =  "../source/WPP2024_F01_Locations.xlsx"
 # %%
 data = pd.read_excel(source_file, sheet_name='DB')
 # %%
@@ -24,16 +24,16 @@ for i, row in data.iloc[1:].iterrows():
         continue
     if locType is None:
         locType = to_concept_id(row['LocTypeName'])
-    
+
     if locType not in esets:
         esets[locType] = list()
     esets[locType].append(row)
 
 # %%
-# continue here! Next: check if we should do extra things to the subregions/geo regions columns.
 esets.keys()
 # %%
 esets['sdg_region'][0]
+esets['ad_hoc_groups']
 # %%
 sdg_regions = pd.concat(esets['sdg_region'], axis=1)
 # %%
@@ -121,6 +121,19 @@ df_income = fix_int_str(df_income, ['parent_id'])
 df_income.to_csv('../../ddf--entities--location--income_group.csv', index=False)
 # %%
 esets.keys()
+
+# ad hoc groups
+ad_hoc_groups = pd.concat(esets['ad_hoc_groups'], axis=1).dropna().T
+ad_hoc_groups.columns
+
+df_ad_hoc = ad_hoc_groups[['LocID', 'Location', 'ParentID']].copy()
+df_ad_hoc.columns = ['ad_hoc_group', 'name', 'parent_id']
+df_ad_hoc['is--ad_hoc_group'] = 'TRUE'
+df_ad_hoc = fix_int_str(df_ad_hoc, ['parent_id'])
+df_ad_hoc
+
+df_ad_hoc.to_csv('../../ddf--entities--location--ad_hoc_group.csv', index=False)
+
 # %%
 geos = pd.concat(esets['geographic_region'], axis=1).dropna(how='all').T
 # %%
@@ -184,7 +197,7 @@ df3['SDGSubRegID'].dropna()
 
 # %%
 df3 = df3[['LocID', 'Location', 'ISO3_Code', 'ISO2_Code',
-           'SDMX_Code', 'ParentID', 
+           'SDMX_Code', 'ParentID',
            'SubRegID', 'GeoRegID']].copy()
 # %%
 df3
@@ -196,8 +209,8 @@ df3['is--country_area'] = "TRUE"
 df3 = fix_int_str(df3, ['sdmx_code', 'parent_id', 'sub_region', 'geographic_region'])
 df3.to_csv('../../ddf--entities--location--country_area.csv', index=False)
 # %%
-# Now create age1 and age5 entity domain
-
+# FIXME: Now create age1 and age5 entity domain
+# Use Population by Age 1 should be fine.
 source_file = '../source/WPP2022_DeathsBySingleAgeSex_Medium_1950-2021.zip'
 # %%
 data2 = pd.read_csv(source_file)
