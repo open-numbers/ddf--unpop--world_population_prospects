@@ -7,3 +7,4 @@ sdg_region,name,sdmx_code,parent_id,is--sdg_region
 1835,Oceania (excluding Australia and New Zealand),543,1828,TRUE
 1836,Australia/New Zealand,53,1828,TRUE
 1829,Europe and Northern America,513,1828,TRUE
+5502,"Europe, Northern America, Australia and New Zealand",777,1828,TRUE
