@@ -1,4 +1,4 @@
-# -*- coding: utf8 -*-
+# -*- coding: utf-8 -*-
 
 #%%
 import pandas as pd
@@ -6,14 +6,21 @@ import numpy as np
 from ddf_utils.str import to_concept_id
 
 # %%
-source_file = "../source/WPP2022_Life_Table_Abridged_Medium_1950-2021.zip"
-source_file2 = '../source/WPP2022_Life_Table_Abridged_Medium_2022-2100.zip'
+source_file = "../source/WPP2024_Life_Table_Abridged_Medium_1950-2023.csv.gz"
+source_file2 = '../source/WPP2024_Life_Table_Abridged_Medium_2024-2100.csv.gz'
 
 # source_file3 = '../source/WPP2022_Life_Table_Complete_Medium_Both_1950-2021.zip'
 
-# File structure is same between the Abridged one and Complete one. 
+# File structure is same between the Abridged one and Complete one.
 # The difference is that abridged one use N years age groups while the complete one use 1 year age groups
 # decided to use the abridged one...
+
+sample = pd.read_csv(source_file, nrows=10000)
+sample
+
+sample.columns
+
+sample['Variant'].unique()
 
 # %%
 data = pd.read_csv(source_file)
@@ -26,7 +33,7 @@ data.columns
 # %%
 data[['SexID', 'Sex']].drop_duplicates()
 
-# we will create 2 datapoints, one with the gender 
+# we will create 2 datapoints, one with the gender
 # %%
 df1 = data.set_index(['LocID', 'Time', 'AgeGrp', 'SexID'])['ax']
 # %%
@@ -50,7 +57,7 @@ data[data['AgeGrpSpan'] == 1]['AgeGrp']  # 0
 # %%
 data[data['AgeGrpSpan'] == 4]['AgeGrp']  # 1-4
 # %%
-# because there 0, 1-4. let's name it to age group broad
+# because there are 0, 1-4. let's name it to age group broad
 # %%
 df1 = data.set_index(['LocID', 'Time', 'SexID', 'AgeGrp'])[
     ['LocTypeName', 'mx', 'qx', 'px', 'lx', 'dx', 'Lx', 'Sx', 'Tx', 'ex', 'ax']].copy()
@@ -89,6 +96,10 @@ def serve_func_total(df):
     indicators = ['mx', 'qx', 'px', 'lx', 'dx', 'lx', 'sx', 'tx', 'ex', 'ax']
     df.index.names = [loctype, 'time', 'age_group_broad']
     df.columns = df.columns.map(to_concept_id)
+
+    if loctype == 'special_other':
+        loctype = "development_group"
+
     if loctype == 'country_area':
         gs = df.groupby(by='age_group_broad')
         for g, gdf in gs:
@@ -106,6 +117,8 @@ def serve_func_sex(df):
     indicators = ['mx', 'qx', 'px', 'lx', 'dx', 'lx', 'sx', 'tx', 'ex', 'ax']
     df.index.names = [loctype, 'time', 'sex', 'age_group_broad']
     df.columns = df.columns.map(to_concept_id)
+    if loctype == 'special_other':
+        loctype = "development_group"
     if loctype == 'country_area':
         gs = df.groupby(by='age_group_broad')
         for g, gdf in gs:
@@ -118,6 +131,7 @@ def serve_func_sex(df):
                 f'../../life_table/ddf--datapoints--{c}--by--{loctype}--time--sex--age_group_broad.csv')
 # %%
 df['LocTypeName'] = df['LocTypeName'].map(to_concept_id)
+df = df[~pd.isnull(df['LocTypeName'])]
 
 # %%
 df_sex = df.loc[:, :, [1, 2], :]
@@ -127,7 +141,7 @@ df_sex
 # %%
 df_total
 # %%
-df_sex.groupby(['LocTypeName']).get_group('country_area').iloc[0, 0]
+df_sex.groupby(['LocTypeName']).get_group(('country_area', )).iloc[0, 0]
 # %%
 df_sex.groupby(['LocTypeName']).apply(serve_func_sex)
 # %%

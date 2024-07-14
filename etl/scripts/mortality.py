@@ -1,4 +1,4 @@
-# -*- coding: utf8 -*-
+# -*- coding: utf-8 -*-
 
 # %%
 
@@ -6,15 +6,19 @@ import pandas as pd
 import numpy as np
 from ddf_utils.str import to_concept_id
 # %%
-source_file1 = '../source/WPP2022_DeathsBySingleAgeSex_Medium_1950-2021.zip'
-source_file2 = '../source/WPP2022_DeathsBySingleAgeSex_Medium_2022-2100.zip'
+source_file1 = '../source/WPP2024_DeathsBySingleAgeSex_Medium_1950-2023.csv.gz'
+source_file2 = '../source/WPP2024_DeathsBySingleAgeSex_Medium_2024-2100.csv.gz'
 # %%
 data1 = pd.read_csv(source_file1)
 data2 = pd.read_csv(source_file2)
 # %%
-data1 
+data1
 # %%
 data1.columns
+
+#
+data1['AgeGrpSpan'].unique()  # [1, -1] where -1 means 100+.
+
 # %%
 # there are deathMale deathFemale indicators, we should create new dimension
 # %%
@@ -23,12 +27,14 @@ df1 = data1[['LocTypeName', 'LocID', 'Time', 'AgeGrp', 'DeathMale', 'DeathFemale
 df2 = data2[['LocTypeName', 'LocID', 'Time', 'AgeGrp', 'DeathMale', 'DeathFemale', 'DeathTotal']].copy()
 # %%
 
-df1 
+df1
 # %%
 df = pd.concat([df1, df2], ignore_index=True)
 # %%
-df 
+df
 # %%
+df = df[~pd.isnull(df['LocTypeName'])].copy()
+
 df.set_index(['LocID', 'Time', 'AgeGrp']).loc[900, 2100, :]['DeathTotal'].plot()
 # %%
 # TODO: we can see the 100+ group makes a sudden up trend. we might remove that
@@ -67,6 +73,8 @@ def serve_func(age_group_col, gender_col, indicators, outdir):
         df = df.copy()
         loctype = to_concept_id(df.iloc[0, 0])
         df.index = df.index.rename({'location': loctype})
+        if loctype == 'special_other':
+            loctype = "development_group"
         if loctype == 'country_area':
             gs = df.groupby(by=age_group_col)
             for g, gdf in gs:
