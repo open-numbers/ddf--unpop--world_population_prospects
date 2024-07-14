@@ -1,13 +1,17 @@
 # -*- coding: utf-8 -*-
 
 # %%
-
+import os
 import pandas as pd
 import numpy as np
 from ddf_utils.str import to_concept_id
 # %%
 source_file1 = '../source/WPP2024_DeathsBySingleAgeSex_Medium_1950-2023.csv.gz'
 source_file2 = '../source/WPP2024_DeathsBySingleAgeSex_Medium_2024-2100.csv.gz'
+
+output_dir = '../../mortality'
+os.makedirs(output_dir, exist_ok=True)
+
 # %%
 data1 = pd.read_csv(source_file1)
 data2 = pd.read_csv(source_file2)
@@ -72,9 +76,9 @@ def serve_func(age_group_col, gender_col, indicators, outdir):
     def func(df):
         df = df.copy()
         loctype = to_concept_id(df.iloc[0, 0])
-        df.index = df.index.rename({'location': loctype})
         if loctype == 'special_other':
             loctype = "development_group"
+        df.index = df.index.rename({'location': loctype})
         if loctype == 'country_area':
             gs = df.groupby(by=age_group_col)
             for g, gdf in gs:

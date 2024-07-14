@@ -1,6 +1,7 @@
 # encoding: utf_8
 
 #%%
+import os
 import pandas as pd
 from ddf_utils.str import to_concept_id
 
@@ -8,6 +9,10 @@ from ddf_utils.str import to_concept_id
 # as of 7/13/2024, csv file for wpp 2024 demographic indicators is not available.
 # FIXME: double check next time because csv files are much easier to deal with
 source_file =  "../source/WPP2024_GEN_F01_DEMOGRAPHIC_INDICATORS_COMPACT.xlsx"
+
+# output dir
+output_dir = '../../demographic_indicators'
+os.makedirs(output_dir, exist_ok=True)
 
 # %%
 data = pd.concat([pd.read_excel(source_file, sheet_name="Estimates", skiprows=16),
@@ -61,7 +66,7 @@ metadata_file = '../source/metadata.xlsx'
 metadata = pd.read_excel(metadata_file, sheet_name='indicators')
 
 # create column name mapping
-colname_mapping = metadata.set_index(['Name'])['concept_id'].to_dict()
+colname_mapping = metadata.set_index(['Name'])['concept'].to_dict()
 
 colname_mapping
 
@@ -105,7 +110,9 @@ for g, subdf in gs:
 
     for c in df_new.columns:
         df_serve = df_new[c].replace('...', None).dropna()
-        df_serve.to_csv(f'../../demographic_indicators/ddf--datapoints--{c}--by--{gid}--time.csv')
+        df_serve = df_serve.reset_index()
+        df_serve['time'] = df_serve['time'].astype('int')
+        df_serve.to_csv(f'../../demographic_indicators/ddf--datapoints--{c}--by--{gid}--time.csv', index=False)
 
 df_new
 # %%

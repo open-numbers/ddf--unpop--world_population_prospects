@@ -16,6 +16,11 @@ from ddf_utils.str import to_concept_id
 
 def fullpath(x):
     return os.path.join('../source/', x)
+
+# create out dir
+for d in ['population', 'population_age5', 'population_age1']:
+    os.makedirs(f'../../{d}', exist_ok=True)
+
 # %%
 # 'WPP2024_TotalPopulationBySex.csv.gz'
 data = pd.read_csv(fullpath('WPP2024_TotalPopulationBySex.csv.gz'))

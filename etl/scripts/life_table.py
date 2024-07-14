@@ -3,11 +3,16 @@
 #%%
 import pandas as pd
 import numpy as np
+import os
 from ddf_utils.str import to_concept_id
 
 # %%
 source_file = "../source/WPP2024_Life_Table_Abridged_Medium_1950-2023.csv.gz"
 source_file2 = '../source/WPP2024_Life_Table_Abridged_Medium_2024-2100.csv.gz'
+
+# output dir
+output_dir = '../../life_table'
+os.makedirs(output_dir, exist_ok=True)
 
 # source_file3 = '../source/WPP2022_Life_Table_Complete_Medium_Both_1950-2021.zip'
 
@@ -98,12 +103,10 @@ data[['SexID', 'Sex']].drop_duplicates()
 def serve_func_total(df):
     loctype = to_concept_id(df.iloc[0, 0])
     indicators = ['mx', 'qx', 'px', 'lx', 'dx', 'nlx', 'sx', 'tx', 'ex', 'ax']
-    df.index.names = [loctype, 'time', 'age_group_broad']
-    df.columns = df.columns.map(to_concept_id)
-
     if loctype == 'special_other':
         loctype = "development_group"
-
+    df.index.names = [loctype, 'time', 'age_group_broad']
+    df.columns = df.columns.map(to_concept_id)
     if loctype == 'country_area':
         gs = df.groupby(by='age_group_broad')
         for g, gdf in gs:
@@ -119,10 +122,10 @@ def serve_func_total(df):
 def serve_func_sex(df):
     loctype = to_concept_id(df.iloc[0, 0])
     indicators = ['mx', 'qx', 'px', 'lx', 'dx', 'nlx', 'sx', 'tx', 'ex', 'ax']
-    df.index.names = [loctype, 'time', 'sex', 'age_group_broad']
-    df.columns = df.columns.map(to_concept_id)
     if loctype == 'special_other':
         loctype = "development_group"
+    df.index.names = [loctype, 'time', 'sex', 'age_group_broad']
+    df.columns = df.columns.map(to_concept_id)
     if loctype == 'country_area':
         gs = df.groupby(by='age_group_broad')
         for g, gdf in gs:

@@ -282,7 +282,7 @@ age_b_more = pd.DataFrame({'age_group_broad': ['0_14', '15_24', '15_49', '50plus
                            'name': ['0-14', '15-24', '15-49', '50+']})
 age_b_more = age_b_more.set_index('age_group_broad')
 
-age_b = pd.concat([age_b, age_b_more])
+age_b = pd.concat([age_b.to_frame(), age_b_more])
 
 # %%
 age_b = age_b.reset_index()
@@ -290,7 +290,7 @@ age_b = age_b.reset_index()
 age_b['is--age_group_broad'] = 'TRUE'
 age_b['age_group_broad'] = age_b['age_group_broad'].map(to_concept_id)
 # %%
-age_b
+# print(age_b_more)
 # %%
 age_b.to_csv('../../ddf--entities--age_group_broad.csv', index=False)
 

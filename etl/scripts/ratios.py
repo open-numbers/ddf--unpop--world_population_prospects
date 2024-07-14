@@ -12,6 +12,10 @@ import os
 # so it's better to just use the data from CSV downloads.
 # TODO: each time we have new data, double check the output with excel file from WPP
 
+# make output dir
+output_dir = '../../ratios'
+os.makedirs(output_dir, exist_ok=True)
+
 # %%
 source = glob('../../population_age1/ddf--datapoints--population--*country*[!x].csv')
 # %%
