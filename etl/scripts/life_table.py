@@ -68,6 +68,10 @@ df2 = data2.set_index(['LocID', 'Time', 'SexID', 'AgeGrp'])[
 # %%
 df = pd.concat([df1, df2])
 
+# rename `Lx` to `nLx`, according to metadata
+# Lx: Number of person-years lived, (nLx), between ages x and x+n
+df = df.rename(columns={'Lx': 'nLx'})
+
 # %%
 df
 # %%
@@ -93,7 +97,7 @@ data[['SexID', 'Sex']].drop_duplicates()
 # %%
 def serve_func_total(df):
     loctype = to_concept_id(df.iloc[0, 0])
-    indicators = ['mx', 'qx', 'px', 'lx', 'dx', 'lx', 'sx', 'tx', 'ex', 'ax']
+    indicators = ['mx', 'qx', 'px', 'lx', 'dx', 'nlx', 'sx', 'tx', 'ex', 'ax']
     df.index.names = [loctype, 'time', 'age_group_broad']
     df.columns = df.columns.map(to_concept_id)
 
@@ -114,7 +118,7 @@ def serve_func_total(df):
 # %%
 def serve_func_sex(df):
     loctype = to_concept_id(df.iloc[0, 0])
-    indicators = ['mx', 'qx', 'px', 'lx', 'dx', 'lx', 'sx', 'tx', 'ex', 'ax']
+    indicators = ['mx', 'qx', 'px', 'lx', 'dx', 'nlx', 'sx', 'tx', 'ex', 'ax']
     df.index.names = [loctype, 'time', 'sex', 'age_group_broad']
     df.columns = df.columns.map(to_concept_id)
     if loctype == 'special_other':
@@ -141,7 +145,7 @@ df_sex
 # %%
 df_total
 # %%
-df_sex.groupby(['LocTypeName']).get_group(('country_area', )).iloc[0, 0]
+df_sex.groupby(['LocTypeName']).get_group('country_area').iloc[0, 0]
 # %%
 df_sex.groupby(['LocTypeName']).apply(serve_func_sex)
 # %%
