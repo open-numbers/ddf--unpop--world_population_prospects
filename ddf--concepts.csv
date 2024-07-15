@@ -1,4 +1,4 @@
-concept_id,name,unit,concept_type,concept,domain,drill_up
+concept,Name,Unit,concept_type,domain,drill_up,name
 popsexratio,"Population Sex Ratio, as of 1 July",males per 100 females,measure,,,
 medianagepop,"Median Age, as of 1 July",years,measure,,,
 natchange,"Natural Change, Births minus Deaths",thousands,measure,,,
@@ -32,24 +32,25 @@ population ,Population on 01 July,thousands,measure,,,
 lexmale,Male Life Expectancy at Birth,years,measure,,,
 lexfemale,Female Life Expectancy at Birth,years,measure,,,
 cdr,Crude Death Rate,"deaths per 1,000 population",measure,,,
-,numeric code for the location; for countries and areas it follows the ISO 3166-1 numeric standard,,entity_domain,location,,
-,ISO 3166-1 alpha-3 location codes,,string,iso3_code,,
-,ISO 3166-1 alpha-2 location codes,,string,iso2_code,,
-,SDMX Global Registry: cross domain code list for geographical areas (version 2.0) represents a combination of reference area codes in M49 and ISO-3166 classification for international data exchange and interoperability https://sdmx.org/?page_id=3215 and https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/SDMX/CL_AREA/2.0,,string,sdmx_code,,
-,year the data refers to,,time,time,,
-,"Age Group, 1 year interval",,entity_domain,age_group_1year,,
-,"Age Group, 5 year interval",,entity_domain,age_group_5year,,
-,"Age Group, Broad",,entity_domain,age_group_broad,,
-,Sex,,entity_domain,sex,,
-,World,,entity_set,world,location,
-,SDG region,,entity_set,sdg_region,location,
-,Development group,,entity_set,development_group,location,
-,Income group,,entity_set,income_group,location,
-,Geographic region,,entity_set,geographic_region,location,
-,Subregion,,entity_set,subregion,location,geographic_region
-,Country/Area,,entity_set,country_area,location,subregion
-,Name,,string,name,,
-,Domain,,string,domain,,
-,Parent entity ID,,string,parent_id,,
-,Unit,,string,unit,,
-,,,string,drill_up,,
+location,,,entity_domain,,,numeric code for the location; for countries and areas it follows the ISO 3166-1 numeric standard
+iso3_code,,,string,,,ISO 3166-1 alpha-3 location codes
+iso2_code,,,string,,,ISO 3166-1 alpha-2 location codes
+sdmx_code,,,string,,,SDMX Global Registry: cross domain code list for geographical areas (version 2.0) represents a combination of reference area codes in M49 and ISO-3166 classification for international data exchange and interoperability https://sdmx.org/?page_id=3215 and https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/SDMX/CL_AREA/2.0
+time,,,time,,,year the data refers to
+age_group_1year,,,entity_domain,,,"Age Group, 1 year interval"
+age_group_5year,,,entity_domain,,,"Age Group, 5 year interval"
+age_group_broad,,,entity_domain,,,"Age Group, Broad"
+sex,,,entity_domain,,,Sex
+world,,,entity_set,location,,World
+sdg_region,,,entity_set,location,,SDG region
+development_group,,,entity_set,location,,Development group
+income_group,,,entity_set,location,,Income group
+geographic_region,,,entity_set,location,,Geographic region
+subregion,,,entity_set,location,geographic_region,Subregion
+country_area,,,entity_set,location,subregion,Country/Area
+name,,,string,,,Name
+domain,,,string,,,Domain
+parent_id,,,string,,,Parent entity ID
+unit,,,string,,,Unit
+drill_up,,,string,,,
+ad_hoc_group,,,entity_domain,,,ad hoc groups
