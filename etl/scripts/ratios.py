@@ -5,6 +5,17 @@ from functools import partial
 from glob import glob
 import dask.dataframe as dd
 import os
+
+# we will calculate from other indicators.
+# alternativly, there are already calculated indicators in WPP
+# but it's in excel file and we need to deal with possible change of format in different WPP versions
+# so it's better to just use the data from CSV downloads.
+# TODO: each time we have new data, double check the output with excel file from WPP
+
+# make output dir
+output_dir = '../../ratios'
+os.makedirs(output_dir, exist_ok=True)
+
 # %%
 source = glob('../../population_age1/ddf--datapoints--population--*country*[!x].csv')
 # %%

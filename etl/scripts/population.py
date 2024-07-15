@@ -1,4 +1,4 @@
-# -*- coding: utf8 -*-
+# -*- coding: utf-8 -*-
 
 # %%
 
@@ -10,52 +10,30 @@ from ddf_utils.str import to_concept_id
 # There are 2 types of population:
 # 1. population on 1 Jan
 # 2. population on 1 Jul
-# use 1 Jul, that's what we use and in WPP it's called population. 
+# use 1 Jul, that's what we use and in WPP it's called population.
 # in WPP population on 1 Jan is called population 1 january
 # %%
-# All source files (Medium only)
-file_list = '''
-WPP2022_Population1JanuaryByAge5GroupSex_Medium.zip
-WPP2022_Population1JanuaryBySingleAgeSex_Medium_1950-2021.zip
-WPP2022_Population1JanuaryBySingleAgeSex_Medium_2022-2100.zip
-WPP2022_PopulationByAge5GroupSex_Medium.zip
-WPP2022_PopulationByAge5GroupSex_Percentage_Medium.zip
-WPP2022_PopulationBySingleAgeSex_Medium_1950-2021.zip
-WPP2022_PopulationBySingleAgeSex_Medium_2022-2100.zip
-WPP2022_PopulationBySingleAgeSex_Medium_Percentage_1950-2021.zip
-WPP2022_PopulationBySingleAgeSex_Medium_Percentage_2022-2100.zip
-WPP2022_PopulationExposureByAge5GroupSex_Medium.zip
-WPP2022_PopulationExposureBySingleAgeSex_Medium_1950-2021.zip
-WPP2022_PopulationExposureBySingleAgeSex_Medium_2022-2100.zip
-WPP2022_TotalPopulationBySex.zip
-'''
 
-all_source_files = filter(
-    lambda x: (len(x) > 0) and ('January' not in x), 
-    file_list.split('\n'))
-# %%
-all_source_files = list(all_source_files)
-all_source_files
-# ['WPP2022_PopulationByAge5GroupSex_Medium.zip',
-#  'WPP2022_PopulationByAge5GroupSex_Percentage_Medium.zip',
-#  'WPP2022_PopulationBySingleAgeSex_Medium_1950-2021.zip',
-#  'WPP2022_PopulationBySingleAgeSex_Medium_2022-2100.zip',
-#  'WPP2022_PopulationBySingleAgeSex_Medium_Percentage_1950-2021.zip',
-#  'WPP2022_PopulationBySingleAgeSex_Medium_Percentage_2022-2100.zip',
-#  'WPP2022_PopulationExposureByAge5GroupSex_Medium.zip',
-#  'WPP2022_PopulationExposureBySingleAgeSex_Medium_1950-2021.zip',
-#  'WPP2022_PopulationExposureBySingleAgeSex_Medium_2022-2100.zip',
-#  'WPP2022_TotalPopulationBySex.zip']
-# %%
 def fullpath(x):
     return os.path.join('../source/', x)
+
+# create out dir
+for d in ['population', 'population_age5', 'population_age1']:
+    os.makedirs(f'../../{d}', exist_ok=True)
+
 # %%
-# 'WPP2022_TotalPopulationBySex.zip'
-data = pd.read_csv(fullpath(all_source_files[-1]))
+# 'WPP2024_TotalPopulationBySex.csv.gz'
+data = pd.read_csv(fullpath('WPP2024_TotalPopulationBySex.csv.gz'))
 # %%
-data 
+data
 # %%
 df = data[data['Variant'] == 'Medium']
+df = df[~pd.isnull(df['LocTypeName'])]
+df['LocTypeName'] = df['LocTypeName'].map(to_concept_id)
+df['LocTypeName'] = df['LocTypeName'].replace('special_other', 'development_group')
+print(df['LocTypeName'].unique())
+
+df['Time'].unique()  # double check if it goes to 2100
 # %%
 df1 = df.set_index(['LocID', 'Time', 'LocTypeName'])[['PopMale', 'PopFemale']]
 df2 = df.set_index(['LocID', 'Time', 'LocTypeName'])[['PopTotal']]
@@ -81,9 +59,9 @@ for g in df_total['loctype'].unique():
     ser.columns = [col, 'time', 'sex', 'population']
     ser.to_csv(f'../../population/ddf--datapoints--population--by--{col}--time--sex.csv', index=False)
 # %%
-df_total 
+df_total
 # %%
-df2.loc[:, :, 'Country/Area']
+df2.loc[:, :, 'country_area']
 # %%
 df2.columns = ['population']
 for g in df2.index.get_level_values(2).unique():
@@ -99,13 +77,20 @@ for g in df3.index.get_level_values(2).unique():
     df_g.index.names = [col, 'time']
     df_g.to_csv(f'../../population/ddf--datapoints--population_density--by--{col}--time.csv')
 # %%
-# WPP2022_PopulationByAge5GroupSex_Medium.zip
+# WPP2024_PopulationByAge5GroupSex_Medium.csv
 
-data = pd.read_csv(fullpath('WPP2022_PopulationByAge5GroupSex_Medium.zip'))
+data = pd.read_csv(fullpath('WPP2024_PopulationByAge5GroupSex_Medium.csv.gz'))
 # %%
 data
 # %%
 data = data[data['Variant'] == 'Medium']
+data = data[~pd.isnull(data['LocTypeName'])]
+data['LocTypeName'] = data['LocTypeName'].map(to_concept_id)
+data['LocTypeName'] = data['LocTypeName'].replace('special_other', 'development_group')
+
+data['Time'].unique()
+
+data
 # %%
 def age_grp_concept(x: str):
     if '+' in x:
@@ -181,13 +166,17 @@ df2.index.names = ['loctype', 'location', 'time', 'age_group_5year']
 serve_func('age_group_5year', None, 'population', 'population_age5')(df2)
 
 # %%
-# WPP2022_PopulationByAge5GroupSex_Percentage_Medium.zip
-data = pd.read_csv(fullpath('WPP2022_PopulationByAge5GroupSex_Percentage_Medium.zip'))
+# WPP2024_PopulationByAge5GroupSex_Percentage_Medium.csv.gz
+data = pd.read_csv(fullpath('WPP2024_PopulationByAge5GroupSex_Percentage_Medium.csv.gz'))
 
 # %%
 data
 # %%
 data['AgeGrp'] = data['AgeGrp'].map(age_grp_concept)
+
+data = data[~pd.isnull(data['LocTypeName'])]
+data['LocTypeName'] = data['LocTypeName'].map(to_concept_id)
+data['LocTypeName'] = data['LocTypeName'].replace('special_other', 'development_group')
 # %%
 data
 # %%
@@ -199,6 +188,8 @@ df1 = df1.stack()
 # %%
 df1.name = 'population_percentage'
 df1.index.names = ['loctype', 'location', 'time', 'age_group_5year', 'sex']
+
+df1
 # %%
 serve_func('age_group_5year', 'sex', 'population_percentage', 'population_age5')(df1)
 # %%
@@ -207,11 +198,11 @@ df2.index.names = ['loctype', 'location', 'time', 'age_group_5year']
 
 serve_func('age_group_5year', None, 'population_percentage', 'population_age5')(df2)
 # %%
-#  'WPP2022_PopulationBySingleAgeSex_Medium_1950-2021.zip',
-#  'WPP2022_PopulationBySingleAgeSex_Medium_2022-2100.zip',
+#  'WPP2024_PopulationBySingleAgeSex_Medium_1950-2021.csv.gz',
+#  'WPP2024_PopulationBySingleAgeSex_Medium_2022-2100.csv.gz',
 
-data1 = pd.read_csv(fullpath('WPP2022_PopulationBySingleAgeSex_Medium_1950-2021.zip'))
-data2 = pd.read_csv(fullpath('WPP2022_PopulationBySingleAgeSex_Medium_2022-2100.zip'))
+data1 = pd.read_csv(fullpath('WPP2024_PopulationBySingleAgeSex_Medium_1950-2023.csv.gz'))
+data2 = pd.read_csv(fullpath('WPP2024_PopulationBySingleAgeSex_Medium_2024-2100.csv.gz'))
 # %%
 data = pd.concat([data1, data2], ignore_index=True)
 
@@ -222,6 +213,11 @@ print(data.shape)
 
 # %%
 data['AgeGrp'] = data['AgeGrp'].map(age_grp_concept)
+data = data[~pd.isnull(data['LocTypeName'])]
+data['LocTypeName'] = data['LocTypeName'].map(to_concept_id)
+data['LocTypeName'] = data['LocTypeName'].replace('special_other', 'development_group')
+
+data.shape
 # %%
 df1 = data.set_index(['LocTypeName', 'LocID', 'Time', 'AgeGrp'])[['PopMale', 'PopFemale']]
 df2 = data.set_index(['LocTypeName', 'LocID', 'Time', 'AgeGrp'])[['PopTotal']]
@@ -240,16 +236,19 @@ df2.columns = ['population']
 df2.index.names = ['loctype', 'location', 'time', 'age_group_1year']
 
 serve_func('age_group_1year', None, 'population', 'population_age1')(df2)
+
 # %%
-# 'WPP2022_PopulationBySingleAgeSex_Medium_Percentage_1950-2021.zip'
-# 'WPP2022_PopulationBySingleAgeSex_Medium_Percentage_2022-2100.zip'
-data1 = pd.read_csv(fullpath('WPP2022_PopulationBySingleAgeSex_Medium_Percentage_1950-2021.zip'))
-data2 = pd.read_csv(fullpath('WPP2022_PopulationBySingleAgeSex_Medium_Percentage_2022-2100.zip'))
+# 'WPP2024_PopulationBySingleAgeSex_Medium_Percentage_1950-2021.zip'
+# 'WPP2024_PopulationBySingleAgeSex_Medium_Percentage_2022-2100.zip'
+data1 = pd.read_csv(fullpath('WPP2024_PopulationBySingleAgeSex_Medium_Percentage_1950-2023.csv.gz'))
+data2 = pd.read_csv(fullpath('WPP2024_PopulationBySingleAgeSex_Medium_Percentage_2024-2100.csv.gz'))
 
 # %%
 data = pd.concat([data1, data2], ignore_index=True)
-
+data = data[~pd.isnull(data['LocTypeName'])]
 data['AgeGrp'] = data['AgeGrp'].map(age_grp_concept)
+data['LocTypeName'] = data['LocTypeName'].map(to_concept_id)
+data['LocTypeName'] = data['LocTypeName'].replace('special_other', 'development_group')
 # %%
 print(data1.shape)
 print(data2.shape)
@@ -272,18 +271,22 @@ df2.columns = ['population_percentage']
 df2.index.names = ['loctype', 'location', 'time', 'age_group_1year']
 
 serve_func('age_group_1year', None, 'population_percentage', 'population_age1')(df2)
+
 # %%
-# 'WPP2022_PopulationExposureByAge5GroupSex_Medium.zip'
-data = pd.read_csv(fullpath('WPP2022_PopulationExposureByAge5GroupSex_Medium.zip'))
+# 'WPP2024_PopulationExposureByAge5GroupSex_Medium.zip'
+data = pd.read_csv(fullpath('WPP2024_PopulationExposureByAge5GroupSex_Medium.csv.gz'))
 # %%
 data
 # %%
 data['AgeGrp'] = data['AgeGrp'].map(age_grp_concept)
+data = data[~pd.isnull(data['LocTypeName'])]
+data['LocTypeName'] = data['LocTypeName'].map(to_concept_id)
+data['LocTypeName'] = data['LocTypeName'].replace('special_other', 'development_group')
 # %%
 df1 = data.set_index(['LocTypeName', 'LocID', 'Time', 'AgeGrp'])[['PopMale', 'PopFemale']]
 df2 = data.set_index(['LocTypeName', 'LocID', 'Time', 'AgeGrp'])[['PopTotal']]
 # %%
-df1 
+df1
 # %%
 df1.columns = [1, 2]
 df1 = df1.stack()
@@ -297,16 +300,20 @@ df2.columns = ['population_exposure']
 df2.index.names = ['loctype', 'location', 'time', 'age_group_5year']
 
 serve_func('age_group_5year', None, 'population_exposure', 'population_age5')(df2)
+
 # %%
-#  'WPP2022_PopulationExposureBySingleAgeSex_Medium_1950-2021.zip',
-#  'WPP2022_PopulationExposureBySingleAgeSex_Medium_2022-2100.zip',
-data1 = pd.read_csv(fullpath('WPP2022_PopulationExposureBySingleAgeSex_Medium_1950-2021.zip'))
-data2 = pd.read_csv(fullpath('WPP2022_PopulationExposureBySingleAgeSex_Medium_2022-2100.zip'))
+#  'WPP2024_PopulationExposureBySingleAgeSex_Medium_1950-2021.zip',
+#  'WPP2024_PopulationExposureBySingleAgeSex_Medium_2022-2100.zip',
+data1 = pd.read_csv(fullpath('WPP2024_PopulationExposureBySingleAgeSex_Medium_1950-2023.csv.gz'))
+data2 = pd.read_csv(fullpath('WPP2024_PopulationExposureBySingleAgeSex_Medium_2024-2100.csv.gz'))
 # %%
 data = pd.concat([data1, data2], ignore_index=True)
 
 # %%
 data['AgeGrp'] = data['AgeGrp'].map(age_grp_concept)
+data = data[~pd.isnull(data['LocTypeName'])]
+data['LocTypeName'] = data['LocTypeName'].map(to_concept_id)
+data['LocTypeName'] = data['LocTypeName'].replace('special_other', 'development_group')
 
 # %%
 print(data1.shape)
@@ -332,5 +339,5 @@ serve_func('age_group_1year', None, 'population_exposure', 'population_age1')(df
 # %%
 # Done!
 # %%
-df1 
+df1
 # %%

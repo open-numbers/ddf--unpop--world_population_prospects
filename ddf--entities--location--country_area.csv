@@ -1,4 +1,4 @@
-country_area,name,iso3_code,iso2_code,sdmx_code,parent_id,subregion,geographic_region,is--country_area
+country_area,name,iso3_code,iso2_code,sdmx_code,parent_id,sub_region,geographic_region,is--country_area
 108,Burundi,BDI,BI,108,910,910,903,TRUE
 174,Comoros,COM,KM,174,910,910,903,TRUE
 262,Djibouti,DJI,DJ,262,910,910,903,TRUE

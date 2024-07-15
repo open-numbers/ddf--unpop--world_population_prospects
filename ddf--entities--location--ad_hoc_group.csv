@@ -1,0 +1,24 @@
+ad_hoc_group,name,parent_id,is--ad_hoc_group
+5536,Group A – already peaked (before 2025),5560,TRUE
+5537,Group A: Sub-Saharan Africa,5536,TRUE
+5538,Group A: Northern Africa and Western Asia,5536,TRUE
+5540,Group A: Eastern and South-Eastern Asia,5536,TRUE
+5541,Group A: Latin America and the Caribbean,5536,TRUE
+5542,Group A: Oceania (excluding Australia and New Zealand),5536,TRUE
+5543,"Group A: Europe, Northern America, Australia and New Zealand",5536,TRUE
+5544,Group B – peaking (between 2025-2054),5560,TRUE
+5545,Group B: Sub-Saharan Africa,5544,TRUE
+5546,Group B: Northern Africa and Western Asia,5544,TRUE
+5547,Group B: Central and Southern Asia,5544,TRUE
+5548,Group B: Eastern and South-Eastern Asia,5544,TRUE
+5549,Group B: Latin America and the Caribbean,5544,TRUE
+5550,Group B: Oceania (excluding Australia and New Zealand),5544,TRUE
+5551,"Group B: Europe, Northern America, Australia and New Zealand",5544,TRUE
+5552,Group C – growing (peak after 2055),5560,TRUE
+5553,Group C: Sub-Saharan Africa,5552,TRUE
+5554,Group C: Northern Africa and Western Asia,5552,TRUE
+5555,Group C: Central and Southern Asia,5552,TRUE
+5556,Group C: Eastern and South-Eastern Asia,5552,TRUE
+5557,Group C: Latin America and the Caribbean,5552,TRUE
+5558,Group C: Oceania (excluding Australia and New Zealand),5552,TRUE
+5559,"Group C: Europe, Northern America, Australia and New Zealand",5552,TRUE

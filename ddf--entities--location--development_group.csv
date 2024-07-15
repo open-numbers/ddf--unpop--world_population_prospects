@@ -5,4 +5,11 @@ development_group,name,sdmx_code,parent_id,is--development_group
 934,"Less developed regions, excluding least developed countries",,902,TRUE
 948,"Less developed regions, excluding China",,1803,TRUE
 1636,Land-locked Developing Countries (LLDC),432,1803,TRUE
+2087,LLDC: Africa,,1636,TRUE
+2088,LLDC: Asia,,1636,TRUE
+2089,LLDC: Europe,,1636,TRUE
+2090,LLDC: Latin America,,1636,TRUE
 1637,Small island developing States (SIDS),722,1803,TRUE
+2091,SIDS Caribbean,,1637,TRUE
+2092,SIDS Pacific,,1637,TRUE
+2093,"SIDS Atlantic, Indian Ocean and South China Sea (AIS)",,1637,TRUE
