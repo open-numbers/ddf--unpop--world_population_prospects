@@ -319,11 +319,11 @@ concepts1['concept_type'] = 'measure'
 # %%
 concepts1 = concepts1.drop(columns=['wpp_column_name'])
 # %%
-concepts1.columns = ['concept_id', 'name', 'unit', 'concept_type']
+# concepts1.columns = ['concept', 'name', 'unit', 'concept_type']
 # %%
 concepts2
 # %%
-concepts = pd.concat([concepts1, concepts2])
+concepts = pd.concat([concepts1, concepts2], ignore_index=True)
 # %%
 concepts
 # %%
