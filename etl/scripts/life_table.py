@@ -103,8 +103,6 @@ data[['SexID', 'Sex']].drop_duplicates()
 def serve_func_total(df):
     loctype = to_concept_id(df.iloc[0, 0])
     indicators = ['mx', 'qx', 'px', 'lx', 'dx', 'nlx', 'sx', 'tx', 'ex', 'ax']
-    if loctype == 'special_other':
-        loctype = "development_group"
     df.index.names = [loctype, 'time', 'age_group_broad']
     df.columns = df.columns.map(to_concept_id)
     if loctype == 'country_area':
@@ -122,8 +120,6 @@ def serve_func_total(df):
 def serve_func_sex(df):
     loctype = to_concept_id(df.iloc[0, 0])
     indicators = ['mx', 'qx', 'px', 'lx', 'dx', 'nlx', 'sx', 'tx', 'ex', 'ax']
-    if loctype == 'special_other':
-        loctype = "development_group"
     df.index.names = [loctype, 'time', 'sex', 'age_group_broad']
     df.columns = df.columns.map(to_concept_id)
     if loctype == 'country_area':
@@ -137,8 +133,9 @@ def serve_func_sex(df):
             df[c].to_csv(
                 f'../../life_table/ddf--datapoints--{c}--by--{loctype}--time--sex--age_group_broad.csv')
 # %%
-df['LocTypeName'] = df['LocTypeName'].map(to_concept_id)
 df = df[~pd.isnull(df['LocTypeName'])]
+df['LocTypeName'] = df['LocTypeName'].map(to_concept_id)
+df['LocTypeName'] = df['LocTypeName'].replace('special_other', 'development_group')
 
 # %%
 df_sex = df.loc[:, :, [1, 2], :]

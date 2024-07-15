@@ -29,6 +29,9 @@ data
 # %%
 df = data[data['Variant'] == 'Medium']
 df = df[~pd.isnull(df['LocTypeName'])]
+df['LocTypeName'] = df['LocTypeName'].map(to_concept_id)
+df['LocTypeName'] = df['LocTypeName'].replace('special_other', 'development_group')
+print(df['LocTypeName'].unique())
 
 df['Time'].unique()  # double check if it goes to 2100
 # %%
@@ -52,22 +55,18 @@ df_total = df_total.reset_index()
 # %%
 for g in df_total['loctype'].unique():
     col = to_concept_id(g)
-    if col == 'special_other':
-        col = "development_group"
     ser = df_total[df_total['loctype'] == g][['location', 'time', 'sex', 'population']].copy()
     ser.columns = [col, 'time', 'sex', 'population']
     ser.to_csv(f'../../population/ddf--datapoints--population--by--{col}--time--sex.csv', index=False)
 # %%
 df_total
 # %%
-df2.loc[:, :, 'Country/Area']
+df2.loc[:, :, 'country_area']
 # %%
 df2.columns = ['population']
 for g in df2.index.get_level_values(2).unique():
     df_g = df2.loc[:, :, g].copy()
     col = to_concept_id(g)
-    if col == 'special_other':
-        col = "development_group"
     df_g.index.names = [col, 'time']
     df_g.to_csv(f'../../population/ddf--datapoints--population--by--{col}--time.csv')
 # %%
@@ -75,8 +74,6 @@ df3.columns = ['population_density']
 for g in df3.index.get_level_values(2).unique():
     df_g = df3.loc[:, :, g].copy()
     col = to_concept_id(g)
-    if col == 'special_other':
-        col = "development_group"
     df_g.index.names = [col, 'time']
     df_g.to_csv(f'../../population/ddf--datapoints--population_density--by--{col}--time.csv')
 # %%
@@ -88,6 +85,8 @@ data
 # %%
 data = data[data['Variant'] == 'Medium']
 data = data[~pd.isnull(data['LocTypeName'])]
+data['LocTypeName'] = data['LocTypeName'].map(to_concept_id)
+data['LocTypeName'] = data['LocTypeName'].replace('special_other', 'development_group')
 
 data['Time'].unique()
 
@@ -117,8 +116,6 @@ def serve_func(age_group_col, gender_col, indicator, outdir):
     def func(df):
         for g in df.index.get_level_values(0).unique():
             col = to_concept_id(g)
-            if col == 'special_other':
-                col = "development_group"
             ser = df.loc[g].copy()
             if gender_col:
                 ser.index.names = [col, 'time', age_group_col, gender_col]
@@ -178,6 +175,8 @@ data
 data['AgeGrp'] = data['AgeGrp'].map(age_grp_concept)
 
 data = data[~pd.isnull(data['LocTypeName'])]
+data['LocTypeName'] = data['LocTypeName'].map(to_concept_id)
+data['LocTypeName'] = data['LocTypeName'].replace('special_other', 'development_group')
 # %%
 data
 # %%
@@ -215,6 +214,8 @@ print(data.shape)
 # %%
 data['AgeGrp'] = data['AgeGrp'].map(age_grp_concept)
 data = data[~pd.isnull(data['LocTypeName'])]
+data['LocTypeName'] = data['LocTypeName'].map(to_concept_id)
+data['LocTypeName'] = data['LocTypeName'].replace('special_other', 'development_group')
 
 data.shape
 # %%
@@ -246,6 +247,8 @@ data2 = pd.read_csv(fullpath('WPP2024_PopulationBySingleAgeSex_Medium_Percentage
 data = pd.concat([data1, data2], ignore_index=True)
 data = data[~pd.isnull(data['LocTypeName'])]
 data['AgeGrp'] = data['AgeGrp'].map(age_grp_concept)
+data['LocTypeName'] = data['LocTypeName'].map(to_concept_id)
+data['LocTypeName'] = data['LocTypeName'].replace('special_other', 'development_group')
 # %%
 print(data1.shape)
 print(data2.shape)
@@ -277,6 +280,8 @@ data
 # %%
 data['AgeGrp'] = data['AgeGrp'].map(age_grp_concept)
 data = data[~pd.isnull(data['LocTypeName'])]
+data['LocTypeName'] = data['LocTypeName'].map(to_concept_id)
+data['LocTypeName'] = data['LocTypeName'].replace('special_other', 'development_group')
 # %%
 df1 = data.set_index(['LocTypeName', 'LocID', 'Time', 'AgeGrp'])[['PopMale', 'PopFemale']]
 df2 = data.set_index(['LocTypeName', 'LocID', 'Time', 'AgeGrp'])[['PopTotal']]
@@ -307,6 +312,8 @@ data = pd.concat([data1, data2], ignore_index=True)
 # %%
 data['AgeGrp'] = data['AgeGrp'].map(age_grp_concept)
 data = data[~pd.isnull(data['LocTypeName'])]
+data['LocTypeName'] = data['LocTypeName'].map(to_concept_id)
+data['LocTypeName'] = data['LocTypeName'].replace('special_other', 'development_group')
 
 # %%
 print(data1.shape)

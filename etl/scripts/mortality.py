@@ -38,8 +38,10 @@ df = pd.concat([df1, df2], ignore_index=True)
 df
 # %%
 df = df[~pd.isnull(df['LocTypeName'])].copy()
+df['LocTypeName'] = df['LocTypeName'].map(to_concept_id)
+df['LocTypeName'] = df['LocTypeName'].replace('special_other', 'development_group')
 
-df.set_index(['LocID', 'Time', 'AgeGrp']).loc[900, 2100, :]['DeathTotal'].plot()
+# df.set_index(['LocID', 'Time', 'AgeGrp']).loc[900, 2100, :]['DeathTotal'].plot()
 # %%
 # TODO: we can see the 100+ group makes a sudden up trend. we might remove that
 
@@ -76,8 +78,6 @@ def serve_func(age_group_col, gender_col, indicators, outdir):
     def func(df):
         df = df.copy()
         loctype = to_concept_id(df.iloc[0, 0])
-        if loctype == 'special_other':
-            loctype = "development_group"
         df.index = df.index.rename({'location': loctype})
         if loctype == 'country_area':
             gs = df.groupby(by=age_group_col)

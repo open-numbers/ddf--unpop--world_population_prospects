@@ -55,6 +55,8 @@ df1[pd.isnull(df1['LocTypeName'])].sample()
 
 # let's remove them all because they are not in the location metadata.
 df1 = df1[~pd.isnull(df1['LocTypeName'])].copy()
+# FIXME: make concept id first, then run replace
+df1['LocTypeName'] = df1['LocTypeName'].replace('Special other', 'Development group')
 df1['Time'] = df1['Time'].astype('int')
 
 # groupby location type and serve each indicator
@@ -64,9 +66,6 @@ def serve_func(df):
     indicators = ['ASFR', 'PASFR', 'Births']
     indicators_id = list(map(to_concept_id, indicators))
     dfnew = df.set_index(['LocID', 'Time', 'AgeGrp'])[indicators]
-    # make sure loctype name match metadata
-    if loctype == 'special_other':
-        loctype = "development_group"
     dfnew.columns = indicators_id
     dfnew.index.names = [loctype, 'time', 'age_group_1year']
 
@@ -96,6 +95,7 @@ df5
 df5['AgeGrp'] = df5['AgeGrp'].map(to_concept_id)
 # also remove empty locations
 df5 = df5[~pd.isnull(df5['LocTypeName'])]
+df5['LocTypeName'] = df5['LocTypeName'].replace('Special other', 'Development group')
 df5['Time'] = df5['Time'].astype('int')
 
 # %%
@@ -106,9 +106,6 @@ def serve_func(df):
     indicators = ['ASFR', 'PASFR', 'Births']
     indicators_id = list(map(to_concept_id, indicators))
     dfnew = df.set_index(['LocID', 'Time', 'AgeGrp'])[indicators]
-    # make sure loctype name match metadata
-    if loctype == 'special_other':
-        loctype = "development_group"
     dfnew.columns = indicators_id
     dfnew.index.names = [loctype, 'time', 'age_group_5year']
 

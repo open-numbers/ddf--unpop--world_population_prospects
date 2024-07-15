@@ -77,6 +77,12 @@ data.columns.map(map_colname)
 
 data.columns = data.columns.map(map_colname)
 
+# rename Special other to Development group
+# because in Location metadata the group Special other actually means LocTypeName = None in the csv files
+# and LocTypeName = Special other actually belongs to Development group.
+# TODO: double check when we have new data next time. also double check other etl scripts.
+data['Type'] = data['Type'].replace('Special other', 'Development Group')
+
 # %%
 # df = data.set_index(['LocTypeName', 'LocID', 'Time', 'Variant'])[use_indicators].copy()
 df = data.set_index(['Type', 'Location code', 'Year', 'Variant'])[use_indicators].copy()
@@ -91,18 +97,17 @@ df = df.reset_index('Variant', drop=True)
 # %%
 df
 # %%
+
 # gs = df.groupby('LocTypeName')
 gs = df.groupby('Type')
 # %%
-gs.get_group('Special other')
+gs.get_group('Development Group')
 # %%
 for g, subdf in gs:
     # df_new = df.reset_index('LocTypeName', drop=True)
     df_new = subdf.reset_index('Type', drop=True)
     # rename some type to match metadata
-    if g == 'Special other':
-        gid = "development_group"
-    elif g == 'Region':
+    if g == 'Region':
         gid = "geographic_region"
     else:
         gid = to_concept_id(g)
