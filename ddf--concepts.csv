@@ -28,7 +28,7 @@ ax,Average number of years lived (nax) between ages x and x+n by those dying in 
 deaths,Deaths,thousands,measure,,
 population_percentage,Percentage of population on 01 July,,measure,,
 population_exposure,Population exposure (01 Jan - 31 Dec),,measure,,
-population ,Population on 01 July,thousands,measure,,
+population,Population on 01 July,thousands,measure,,
 lexmale,Male Life Expectancy at Birth,years,measure,,
 lexfemale,Female Life Expectancy at Birth,years,measure,,
 cdr,Crude Death Rate,"deaths per 1,000 population",measure,,
