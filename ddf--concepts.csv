@@ -1,56 +1,56 @@
-concept,Name,Unit,concept_type,domain,drill_up,name
-popsexratio,"Population Sex Ratio, as of 1 July",males per 100 females,measure,,,
-medianagepop,"Median Age, as of 1 July",years,measure,,,
-natchange,"Natural Change, Births minus Deaths",thousands,measure,,,
-natchangert,Rate of Natural Change,"per 1,000 population",measure,,,
-popchange,Population Change,thousands,measure,,,
-popgrowthrate,Population Growth Rate,percentage,measure,,,
-doublingtime,Population Annual Doubling Time,years,measure,,,
-births1519,Births by women aged 15 to 19,thousands,measure,,,
-nnr,Net Reproduction Rate,surviving daughters per woman,measure,,,
-mac,Mean Age Childbearing,years,measure,,,
-srb,Sex Ratio at Birth,males per 100 female births,measure,,,
-netmigrations,Net Number of Migrants,thousands,measure,,,
-cnmr,Net Migration Rate,"per 1,000 population",measure,,,
-asfr,Age-specific Fertility Rate ,,measure,,,
-pasfr,Percent Age-specific Fertility Rate,,measure,,,
-births,Births,thousands,measure,,,
-mx,"Central death rate, nmx, for the age interval (x, x+n)",,measure,,,
-qx,"Probability of dying (nqx), for an individual between age x and x+n",,measure,,,
-px,"Probability of surviving, (npx), for an individual of age x to age x+n",,measure,,,
-lx,"Number of survivors, (lx), at age (x) for 100000 births",,measure,,,
-dx,"Number of deaths, (ndx), between ages x and x+n",,measure,,,
-nlx,"Number of person-years lived, (nLx), between ages x and x+n",,measure,,,
-sx,"Survival ratio (nSx) corresponding to proportion of the life table population in age group (x, x+n) who are alive n year later",,measure,,,
-tx,"Person-years lived, (Tx), above age x",,measure,,,
-ex,"Expectation of life (ex) at age x, i.e., average number of years lived subsequent to age x by those reaching age x",,measure,,,
-ax,Average number of years lived (nax) between ages x and x+n by those dying in the interval,,measure,,,
-deaths,Deaths,thousands,measure,,,
-population_percentage,Percentage of population on 01 July,,measure,,,
-population_exposure,Population exposure (01 Jan - 31 Dec),,measure,,,
-population ,Population on 01 July,thousands,measure,,,
-lexmale,Male Life Expectancy at Birth,years,measure,,,
-lexfemale,Female Life Expectancy at Birth,years,measure,,,
-cdr,Crude Death Rate,"deaths per 1,000 population",measure,,,
-location,,,entity_domain,,,numeric code for the location; for countries and areas it follows the ISO 3166-1 numeric standard
-iso3_code,,,string,,,ISO 3166-1 alpha-3 location codes
-iso2_code,,,string,,,ISO 3166-1 alpha-2 location codes
-sdmx_code,,,string,,,SDMX Global Registry: cross domain code list for geographical areas (version 2.0) represents a combination of reference area codes in M49 and ISO-3166 classification for international data exchange and interoperability https://sdmx.org/?page_id=3215 and https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/SDMX/CL_AREA/2.0
-time,,,time,,,year the data refers to
-age_group_1year,,,entity_domain,,,"Age Group, 1 year interval"
-age_group_5year,,,entity_domain,,,"Age Group, 5 year interval"
-age_group_broad,,,entity_domain,,,"Age Group, Broad"
-sex,,,entity_domain,,,Sex
-world,,,entity_set,location,,World
-sdg_region,,,entity_set,location,,SDG region
-development_group,,,entity_set,location,,Development group
-income_group,,,entity_set,location,,Income group
-geographic_region,,,entity_set,location,,Geographic region
-subregion,,,entity_set,location,geographic_region,Subregion
-country_area,,,entity_set,location,subregion,Country/Area
-name,,,string,,,Name
-domain,,,string,,,Domain
-parent_id,,,string,,,Parent entity ID
-unit,,,string,,,Unit
-drill_up,,,string,,,
-ad_hoc_group,,,entity_domain,,,ad hoc groups
+concept,name,unit,concept_type,domain,drill_up
+popsexratio,"Population Sex Ratio, as of 1 July",males per 100 females,measure,,
+medianagepop,"Median Age, as of 1 July",years,measure,,
+natchange,"Natural Change, Births minus Deaths",thousands,measure,,
+natchangert,Rate of Natural Change,"per 1,000 population",measure,,
+popchange,Population Change,thousands,measure,,
+popgrowthrate,Population Growth Rate,percentage,measure,,
+doublingtime,Population Annual Doubling Time,years,measure,,
+births1519,Births by women aged 15 to 19,thousands,measure,,
+nnr,Net Reproduction Rate,surviving daughters per woman,measure,,
+mac,Mean Age Childbearing,years,measure,,
+srb,Sex Ratio at Birth,males per 100 female births,measure,,
+netmigrations,Net Number of Migrants,thousands,measure,,
+cnmr,Net Migration Rate,"per 1,000 population",measure,,
+asfr,Age-specific Fertility Rate ,,measure,,
+pasfr,Percent Age-specific Fertility Rate,,measure,,
+births,Births,thousands,measure,,
+mx,"Central death rate, nmx, for the age interval (x, x+n)",,measure,,
+qx,"Probability of dying (nqx), for an individual between age x and x+n",,measure,,
+px,"Probability of surviving, (npx), for an individual of age x to age x+n",,measure,,
+lx,"Number of survivors, (lx), at age (x) for 100000 births",,measure,,
+dx,"Number of deaths, (ndx), between ages x and x+n",,measure,,
+nlx,"Number of person-years lived, (nLx), between ages x and x+n",,measure,,
+sx,"Survival ratio (nSx) corresponding to proportion of the life table population in age group (x, x+n) who are alive n year later",,measure,,
+tx,"Person-years lived, (Tx), above age x",,measure,,
+ex,"Expectation of life (ex) at age x, i.e., average number of years lived subsequent to age x by those reaching age x",,measure,,
+ax,Average number of years lived (nax) between ages x and x+n by those dying in the interval,,measure,,
+deaths,Deaths,thousands,measure,,
+population_percentage,Percentage of population on 01 July,,measure,,
+population_exposure,Population exposure (01 Jan - 31 Dec),,measure,,
+population ,Population on 01 July,thousands,measure,,
+lexmale,Male Life Expectancy at Birth,years,measure,,
+lexfemale,Female Life Expectancy at Birth,years,measure,,
+cdr,Crude Death Rate,"deaths per 1,000 population",measure,,
+location,numeric code for the location; for countries and areas it follows the ISO 3166-1 numeric standard,,entity_domain,,
+iso3_code,ISO 3166-1 alpha-3 location codes,,string,,
+iso2_code,ISO 3166-1 alpha-2 location codes,,string,,
+sdmx_code,SDMX Global Registry: cross domain code list for geographical areas (version 2.0) represents a combination of reference area codes in M49 and ISO-3166 classification for international data exchange and interoperability https://sdmx.org/?page_id=3215 and https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/SDMX/CL_AREA/2.0,,string,,
+time,year the data refers to,,time,,
+age_group_1year,"Age Group, 1 year interval",,entity_domain,,
+age_group_5year,"Age Group, 5 year interval",,entity_domain,,
+age_group_broad,"Age Group, Broad",,entity_domain,,
+sex,Sex,,entity_domain,,
+world,World,,entity_set,location,
+sdg_region,SDG region,,entity_set,location,
+development_group,Development group,,entity_set,location,
+income_group,Income group,,entity_set,location,
+geographic_region,Geographic region,,entity_set,location,
+subregion,Subregion,,entity_set,location,geographic_region
+country_area,Country/Area,,entity_set,location,subregion
+name,Name,,string,,
+domain,Domain,,string,,
+parent_id,Parent entity ID,,string,,
+unit,Unit,,string,,
+drill_up,,,string,,
+ad_hoc_group,ad hoc groups,,entity_domain,,

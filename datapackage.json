@@ -8,7 +8,7 @@
     "description": "",
     "author": "",
     "license": "",
-    "created": "2024-07-15T03:08:57.650433+00:00",
+    "created": "2024-07-17T03:29:38.664271+00:00",
     "translations": [],
     "version": "0.0.1",
     "resources": [
@@ -21,10 +21,10 @@
                         "name": "concept"
                     },
                     {
-                        "name": "Name"
+                        "name": "name"
                     },
                     {
-                        "name": "Unit"
+                        "name": "unit"
                     },
                     {
                         "name": "concept_type"
@@ -34,9 +34,6 @@
                     },
                     {
                         "name": "drill_up"
-                    },
-                    {
-                        "name": "name"
                     }
                 ],
                 "primaryKey": "concept"
@@ -58654,24 +58651,6 @@
                 "primaryKey": [
                     "concept"
                 ],
-                "value": "Name",
-                "resources": [
-                    "ddf--concepts"
-                ]
-            },
-            {
-                "primaryKey": [
-                    "concept"
-                ],
-                "value": "Unit",
-                "resources": [
-                    "ddf--concepts"
-                ]
-            },
-            {
-                "primaryKey": [
-                    "concept"
-                ],
                 "value": "concept_type",
                 "resources": [
                     "ddf--concepts"
@@ -58700,6 +58679,15 @@
                     "concept"
                 ],
                 "value": "name",
+                "resources": [
+                    "ddf--concepts"
+                ]
+            },
+            {
+                "primaryKey": [
+                    "concept"
+                ],
+                "value": "unit",
                 "resources": [
                     "ddf--concepts"
                 ]
