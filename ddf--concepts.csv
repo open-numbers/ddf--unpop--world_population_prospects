@@ -32,6 +32,8 @@ population,Population on 01 July,thousands,measure,,
 lexmale,Male Life Expectancy at Birth,years,measure,,
 lexfemale,Female Life Expectancy at Birth,years,measure,,
 cdr,Crude Death Rate,"deaths per 1,000 population",measure,,
+population_density,Population Density,,measure,,
+total_dependency_ratio1564,Total Dependency Ratio 15/64,,measure,,
 location,numeric code for the location; for countries and areas it follows the ISO 3166-1 numeric standard,,entity_domain,,
 iso3_code,ISO 3166-1 alpha-3 location codes,,string,,
 iso2_code,ISO 3166-1 alpha-2 location codes,,string,,
@@ -46,11 +48,11 @@ sdg_region,SDG region,,entity_set,location,
 development_group,Development group,,entity_set,location,
 income_group,Income group,,entity_set,location,
 geographic_region,Geographic region,,entity_set,location,
-subregion,Subregion,,entity_set,location,geographic_region
-country_area,Country/Area,,entity_set,location,subregion
+subregion,Subregion,,entity_set,location,"[""geographic_region""]"
+country_area,Country/Area,,entity_set,location,"[""subregion""]"
 name,Name,,string,,
 domain,Domain,,string,,
 parent_id,Parent entity ID,,string,,
 unit,Unit,,string,,
 drill_up,,,string,,
-ad_hoc_group,ad hoc groups,,entity_domain,,
+ad_hoc_groups,ad hoc groups,,entity_set,location,

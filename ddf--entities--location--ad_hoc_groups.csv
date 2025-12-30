@@ -1,4 +1,4 @@
-ad_hoc_group,name,parent_id,is--ad_hoc_group
+ad_hoc_groups,name,parent_id,is--ad_hoc_groups
 5536,Group A – already peaked (before 2025),5560,TRUE
 5537,Group A: Sub-Saharan Africa,5536,TRUE
 5538,Group A: Northern Africa and Western Asia,5536,TRUE
